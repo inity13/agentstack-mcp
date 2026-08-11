@@ -1,0 +1,20 @@
+{
+  "name": "agentstack-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AgentStack MCP — one deterministic reasoning stack for AI agents: simulate (ScenarioSim) + decide (DecisionMatrix) + compute (PrecisionCalc), plus cross-domain composite tools. Cloudflare Pages Functions.",
+  "type": "module",
+  "scripts": {
+    "sync-engines": "bash scripts/sync-engines.sh",
+    "build": "esbuild worker-src/index.mjs --bundle --format=esm --target=es2022 --platform=neutral --outfile=site/_worker.js --minify",
+    "deploy": "npm run build && wrangler pages deploy site --project-name agentstack-mcp --branch main --commit-dirty=true",
+    "dev": "npm run build && wrangler pages dev site",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "decimal.js": "^10.4.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0"
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+package-lock.json
+site/_worker.js
+.env
+*.env
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+.wrangler/
+coverage/

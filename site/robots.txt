@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /success
+Disallow: /portal
+Disallow: /webhook
+
+Sitemap: https://agentstack-mcp.pages.dev/sitemap.xml

@@ -1,0 +1,47 @@
+{
+  "name": "AgentStack MCP",
+  "description": "One deterministic reasoning stack for AI agents: simulate (ScenarioSim), decide (DecisionMatrix), and compute (PrecisionCalc) behind a single endpoint and one API key, plus cross-domain composite tools (plan_to_valuation, evaluate_options_with_scenarios, stress_test_decision). Exact decimals, never floats.",
+  "version": "1.0.0",
+  "homepage": "https://agentstack-mcp.pages.dev",
+  "vendor": "DataNest",
+  "license": "MIT",
+  "transport": {
+    "type": "streamable-http",
+    "url": "https://agentstack-mcp.pages.dev/mcp"
+  },
+  "authentication": {
+    "type": "api_key",
+    "required": false,
+    "header": "X-API-Key",
+    "notes": "Free tier requires no key (20 calls/day). One key covers all three products + composites."
+  },
+  "profiles": {
+    "note": "Append ?profile=finance|decision|simulation|all to the /mcp URL to load only that subset of tools.",
+    "all": "every tool (default)",
+    "finance": "calc_* + plan_to_valuation",
+    "decision": "decide_* + evaluate_options_with_scenarios + stress_test_decision",
+    "simulation": "sim_* + all composites"
+  },
+  "client_config_examples": {
+    "generic": { "mcpServers": { "agentstack": { "url": "https://agentstack-mcp.pages.dev/mcp" } } },
+    "finance_profile": { "mcpServers": { "agentstack": { "url": "https://agentstack-mcp.pages.dev/mcp?profile=finance" } } },
+    "with_api_key": { "mcpServers": { "agentstack": { "url": "https://agentstack-mcp.pages.dev/mcp", "headers": { "X-API-Key": "ssak_live_your_key" } } } }
+  },
+  "namespaces": {
+    "sim_*": "ScenarioSim — what-if / scenario simulation",
+    "decide_*": "DecisionMatrix — multi-criteria decision analysis",
+    "calc_*": "PrecisionCalc — exact finance / business math"
+  },
+  "composite_tools": ["plan_to_valuation", "evaluate_options_with_scenarios", "stress_test_decision"],
+  "standalone_servers": {
+    "scenariosim": "https://scenariosim-mcp.pages.dev/mcp",
+    "decisionmatrix": "https://decisionmatrix-mcp.pages.dev/mcp",
+    "precisioncalc": "https://precisioncalc-mcp.pages.dev/mcp"
+  },
+  "pricing": [
+    { "plan": "free", "price_usd_month": 0, "daily_calls": 20 },
+    { "plan": "starter", "price_usd_month": 19, "daily_calls": 8000 },
+    { "plan": "pro", "price_usd_month": 59, "daily_calls": 80000 }
+  ],
+  "docs": "https://agentstack-mcp.pages.dev/llms.txt"
+}

@@ -1,0 +1,64 @@
+# AgentStack MCP
+
+> One deterministic reasoning stack for AI agents, behind a single Streamable-HTTP
+> endpoint and one API key: **simulate** (ScenarioSim) → **decide** (DecisionMatrix)
+> → **compute** (PrecisionCalc), plus cross-domain **composite tools** that chain
+> them. 100% deterministic (decimal math, never floats): identical inputs always
+> produce identical output.
+
+Live remote MCP endpoint (Streamable HTTP): https://agentstack-mcp.pages.dev/mcp
+
+AgentStack bundles three standalone MCP servers into one so an agent installs a
+single server, uses one key, and can run reasoning that spans all three domains.
+Free tier needs no API key (20 tool calls/day). Paid plans return a key sent as
+the `X-API-Key` header.
+
+## Connect
+
+- Endpoint: `https://agentstack-mcp.pages.dev/mcp` (transport: streamable-http)
+- Config: `{"mcpServers":{"agentstack":{"url":"https://agentstack-mcp.pages.dev/mcp"}}}`
+- Focused subset: add `?profile=finance` (or `decision`, `simulation`) to the URL
+- With a key: add `"headers": {"X-API-Key": "ssak_live_..."}`
+
+## Namespaces (24 tools)
+
+- `sim_*` — ScenarioSim: what-if / scenario simulation (run, sensitivity, break-even, compare, templates)
+- `decide_*` — DecisionMatrix: multi-criteria decision analysis (decide, score, sensitivity, compare_two, methods)
+- `calc_*` — PrecisionCalc: exact finance/business math (metrics, currency, business-days, compound growth, NPV, IRR, loan, depreciation)
+- `list_capabilities`, `health_check` — discovery + status
+
+## Composite tools (the reason to use the stack)
+
+- `plan_to_valuation` — simulate a plan, then value its cash-flow stream (NPV/IRR). ScenarioSim → PrecisionCalc.
+- `evaluate_options_with_scenarios` — project each option as a scenario, then rank the outcomes. ScenarioSim → DecisionMatrix.
+- `stress_test_decision` — stress a scenario assumption across every option and see if the winner holds. ScenarioSim × DecisionMatrix.
+
+## Profiles
+
+Append `?profile=` to the endpoint to reduce tool-selection noise for focused agents:
+
+- `all` (default) — every tool
+- `finance` — `calc_*` + `plan_to_valuation`
+- `decision` — `decide_*` + `evaluate_options_with_scenarios` + `stress_test_decision`
+- `simulation` — `sim_*` + all composites
+
+## Standalone servers
+
+Prefer one domain only? The three products also run on their own:
+
+- ScenarioSim: https://scenariosim-mcp.pages.dev/mcp
+- DecisionMatrix: https://decisionmatrix-mcp.pages.dev/mcp
+- PrecisionCalc: https://precisioncalc-mcp.pages.dev/mcp
+
+## Pricing
+
+- Free: 20 calls/day, no key
+- Starter: $19/mo, 8,000 calls/day (vs ~$36/mo buying the three separately)
+- Pro: $59/mo, 80,000 calls/day
+
+One key + one quota covers all three products and the composites.
+
+## Docs
+
+- Homepage: https://agentstack-mcp.pages.dev
+- Connection manifest (JSON): https://agentstack-mcp.pages.dev/mcp.json

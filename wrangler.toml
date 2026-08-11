@@ -1,0 +1,21 @@
+name = "agentstack-mcp"
+pages_build_output_dir = "site"
+compatibility_date = "2024-09-01"
+
+# API keys + daily usage counters (single quota across the whole stack).
+[[kv_namespaces]]
+binding = "AGENTSTACK_KV"
+id = "c995a972bdc04c4ba3c0f871389e1b3e"
+
+[vars]
+AGENTSTACK_BASE_URL = "https://agentstack-mcp.pages.dev"
+PRICE_STARTER = "price_1U3EljI051HaG0hDYwMS1qhh"
+PRICE_PRO = "price_1U3ElkI051HaG0hD41F74mdG"
+FREE_DAILY = "20"
+STARTER_DAILY = "8000"
+PRO_DAILY = "80000"
+
+# Secrets (never in this file):
+#   wrangler pages secret put STRIPE_SECRET_KEY --project-name agentstack-mcp
+#   wrangler pages secret put STRIPE_WEBHOOK_SECRET --project-name agentstack-mcp
+# Self-host / private: leave KV + Stripe unset -> fails open (free tier).

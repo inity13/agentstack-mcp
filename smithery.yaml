@@ -1,0 +1,19 @@
+# Smithery listing for the hosted AgentStack MCP server (remote, Streamable HTTP).
+startCommand:
+  type: http
+  url: "https://agentstack-mcp.pages.dev/mcp"
+  configSchema:
+    type: object
+    properties:
+      apiKey:
+        type: string
+        title: "API key (optional)"
+        description: "Paid-plan key (ssak_live_...). Leave blank for the free tier."
+      profile:
+        type: string
+        title: "Tool profile (optional)"
+        description: "all | finance | decision | simulation. Appended as ?profile=."
+    required: []
+  exampleConfig:
+    apiKey: ""
+    profile: "all"
