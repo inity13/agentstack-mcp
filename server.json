@@ -1,8 +1,16 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.inity13/agentstack-mcp",
-  "description": "One deterministic reasoning stack for AI agents: simulate + decide + compute, plus cross-domain tools.",
+  "description": "Deterministic reasoning stack for AI agents: simulate, decide & compute, plus cross-domain tools.",
   "version": "1.0.0",
-  "repository": { "url": "https://github.com/inity13/agentstack-mcp", "source": "github" },
-  "remotes": [ { "type": "streamable-http", "url": "https://agentstack-mcp.pages.dev/mcp" } ]
+  "repository": {
+    "url": "https://github.com/inity13/agentstack-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://agentstack-mcp.pages.dev/mcp"
+    }
+  ]
 }
