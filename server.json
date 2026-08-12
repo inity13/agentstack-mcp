@@ -12,5 +12,15 @@
       "type": "streamable-http",
       "url": "https://agentstack-mcp.pages.dev/mcp"
     }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "agentstack-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
   ]
 }
