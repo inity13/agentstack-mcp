@@ -1,6 +1,6 @@
 {
   "name": "agentstack-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "AgentStack MCP \u2014 one deterministic reasoning stack for AI agents: simulate (ScenarioSim) + decide (DecisionMatrix) + compute (PrecisionCalc) with cross-domain composite tools. Runs over stdio (npx) or as a remote server.",
   "type": "module",
@@ -56,5 +56,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "mcpName": "io.github.inity13/agentstack-mcp"
 }
